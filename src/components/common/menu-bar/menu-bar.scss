@@ -9,19 +9,38 @@
         justify-content: flex-start;
     }
 
-    .menu-item {
-        
+    .menu-item, .menu-item-has-submenu {
         a {
             color: #fff;
             display: block;
-            font-size: 14px;
             padding: 10px 20px;
-            text-transform: uppercase;
-            
+        }
+    } 
+
+    .menu-item {
+        font-size: 14px;
+        text-transform: uppercase;
+        
+        &>a {
             &.router-link-active, &:hover {
                 background-color: #2C3E50;
             }
 
+        }
+    }
+
+    .menu-item-has-submenu {
+        cursor: pointer;
+        position: relative;
+    }
+
+    .submenu-list {
+        top: 100%;
+        min-width: 200px;
+        position: absolute;
+
+        a {
+            display: block;
         }
     }
 }

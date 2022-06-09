@@ -18,3 +18,8 @@ export const SERVICE_TYPE = {
 export const DEFAULT = {
     storageSavedName: 'ahasoft-logged'
 }
+
+export const groupRoutes = {
+    home: 'home',
+    client: 'clients',
+}

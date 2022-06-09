@@ -6,14 +6,16 @@
                     <router-link :to="{name: menuItem.subMenus[0].name }"> {{ menuItem.name }}</router-link>
                 </template>
                 <template v-else>
-                    <div>{{ menuItem.name }}</div>
-                    <ul>
-                        <li v-for="(subMenu, subMenuIndex) in menuItem.subMenus" :key="subMenuIndex">
-                            <router-link :to="{name: subMenu.name}">
-                                {{ subMenu.text }}
-                            </router-link>
-                        </li>
-                    </ul>
+                    <li class="menu-item menu-item-has-submenu">
+                        <a :class="setActiveMenuItem(menuItem.name)">{{ menuItem.name }}</a>
+                        <ul class="submenu-list">
+                            <li v-for="(subMenu, subMenuIndex) in menuItem.subMenus" :key="subMenuIndex">
+                                <router-link :to="{name: subMenu.name}">
+                                    {{ subMenu.text }}
+                                </router-link>
+                            </li>
+                        </ul>
+                    </li>
                 </template>
             </li>
         </ul>
@@ -22,13 +24,15 @@
 
 <script>
 import { onMounted, ref } from 'vue';
+import { useRoute } from 'vue-router';
 import { routes } from '@/routes/routes';
     export default {
         setup() {
-            let menuList = ref([])
+            let menuList = ref([]);
+            const routeProperties = useRoute();
 
             onMounted(() => {
-                loadMenu()
+                loadMenu();
             });
     
             const loadMenu = () => {
@@ -47,8 +51,17 @@ import { routes } from '@/routes/routes';
                 menuList.value = menuItems
             }
 
+            const setActiveMenuItem = (routerName) => {
+                console.log('routerName', routerName)
+                const currentRoutePath = routeProperties.path.split('/');
+                console.log('currentRoutePath', currentRoutePath);
+                if (routerName == currentRoutePath[1]) return 'menu-item-active';
+                return ''
+            }
+
             return {
                 menuList,
+                setActiveMenuItem,
             }
             
         }
