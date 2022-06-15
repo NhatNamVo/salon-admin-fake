@@ -54,7 +54,6 @@ const router = createRouter({
 
 router.beforeEach((to, from, next) => {
   const userLogged = getUserLogged();
-  console.log(userLogged)
     if (to.name === "login" && userLogged) {
       next({ name: "client-list" });
     }

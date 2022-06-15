@@ -23,3 +23,8 @@ export const groupRoutes = {
     home: 'home',
     client: 'clients',
 }
+
+export const shopLocation = {
+    'VN' : 'vi-vn',
+    'KR' : 'kr-ko',
+}

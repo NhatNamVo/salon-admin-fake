@@ -15,7 +15,7 @@
 
         .add-clients {
             button {
-                background-color: #29527B;
+                // background-color: #29527B;
                 color: #fff;
             }
         }
@@ -30,6 +30,12 @@
 
         &--container {
             margin-top: 20px;
+        }
+    }
+
+    .clientList {
+        .el-dialog {
+            width: 75% !important;
         }
     }
 }

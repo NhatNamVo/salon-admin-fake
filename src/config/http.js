@@ -1,3 +1,4 @@
+import { BASE_URL_SERVICE } from "./service-http";
 import { DEFAULT } from "@/helpers/contants/constants"
 import { getUserLogged } from "@/helpers/utils/sesstion-storage/session-storage"
 import axios from "axios"
@@ -16,7 +17,7 @@ export const callApi = (url, data = null, method = "POST") => {
     console.log(authToken)
 
     return axios({
-        url,
+        url: BASE_URL_SERVICE + url,
         method,
         data,
         headers: {

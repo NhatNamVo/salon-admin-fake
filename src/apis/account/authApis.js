@@ -1,8 +1,8 @@
 import { callApi } from "@/config/http"
 
 const authApis = {
-    login: (url, payload) => {
-        return callApi(url, payload);
+    login: (payload) => {
+        return callApi('/api/aggr/v1/Auth/Login/Subscriber', payload);
     }
 };
 

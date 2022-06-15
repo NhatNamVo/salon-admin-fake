@@ -52,9 +52,7 @@ import { routes } from '@/routes/routes';
             }
 
             const setActiveMenuItem = (routerName) => {
-                console.log('routerName', routerName)
                 const currentRoutePath = routeProperties.path.split('/');
-                console.log('currentRoutePath', currentRoutePath);
                 if (routerName == currentRoutePath[1]) return 'menu-item-active';
                 return ''
             }

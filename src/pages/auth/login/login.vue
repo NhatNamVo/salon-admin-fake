@@ -15,8 +15,6 @@ import { ElNotification } from 'element-plus';
 import authApis from "@/apis/account/authApis";
 import { SALONADMIN_SOLUTION_ID } from "@/config/service-http";
 import AuthForm from "@/components/auth/auth-form/auth-form.vue";
-import { getServiceUrl } from "@/helpers/utils/api-url-generation";
-import { SERVICE_NAME, SERVICE_TYPE } from "@/helpers/contants/constants";
 import { setUserLogin } from '@/helpers/utils/sesstion-storage/session-storage';
 
 const openNotification = (status, messages = []) => {
@@ -39,13 +37,6 @@ export default {
     const router = useRouter();
 
     const solutionId = SALONADMIN_SOLUTION_ID;
-    const loginUrlApi = getServiceUrl(
-      SERVICE_NAME.account.userAccountLogin,
-      1,
-      SERVICE_TYPE.AGG,
-      'auth'
-    );
-
 
     const account = reactive({
       userID: "",
@@ -60,7 +51,7 @@ export default {
         loading.value = true;
         messages = [];
         try {
-            const response = await authApis.login(loginUrlApi, {
+            const response = await authApis.login({
             ...account,
             solutionId,
             });
